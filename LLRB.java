@@ -119,9 +119,8 @@ public class LLRB {
 	// The tree should already be balanced (wrt black nodes) before making a call to this method.
 	public void fixLLRB() {
 		fixLLRB(root);
-		// TODO : complete this method
 	}
-  
+  	//This method does not work like it is supposed to. 
 	private void fixLLRB(Node n){
 			if (n==null) return;
 			if (isRed(n.right) && !isRed(n.left)) rotateLeft(n);
