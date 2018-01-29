@@ -46,7 +46,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 	
 	//Inserts the specified key-value pair into the symbol table, overwriting the old 
 	//value with the new value if the symbol table already contains the specified key.
-  public void put(Key key, Value val) {
+  	public void put(Key key, Value val) {
 		if (key == null) throw new NullPointerException("first argument to put() is null");
 		root = put(root, key, val);
 	}
@@ -69,13 +69,13 @@ public class BST<Key extends Comparable<Key>, Value> {
 	}
   
 	public int size() {
-        return size(root);
-    }
+        	return size(root);
+    	}
     
 	private int size(Node x) {
-        if (x == null) return 0;
-        else return x.size;
-    }
+        	if (x == null) return 0;
+        	else return x.size;
+    	}
     
 	//Returns the number of null nodes in this symbol table.
 	public int numNull() {
@@ -105,7 +105,7 @@ public class BST<Key extends Comparable<Key>, Value> {
 		if (root == null) return null;
 		int count = 0;
 		if (root.left != null && root.right != null){
-		count = root.left.size + root.right.size + 1;
+			count = root.left.size + root.right.size + 1;
 		} else {
 			if (root.left == null && root.right!=null) count = root.right.size+1;
 			else if (root.right == null && root.left!=null) count = root.left.size+1;
@@ -113,18 +113,18 @@ public class BST<Key extends Comparable<Key>, Value> {
 		}
 		count = Math.floorDiv(count, 2);
 		Node x = median(root, count);
-        return x.key;
+        	return x.key;
 	}
   
 	private Node median(Node x, int k) {
-        if (x == null) return null; 
-        int t = size(x.left); 
-        if      (t > k) return median(x.left,  k); 
-        else if (t < k) return median(x.right, k-t-1); 
-        else            return x; 
-    } 
+        	if (x == null) return null; 
+        	int t = size(x.left); 
+        	if      (t > k) return median(x.left,  k); 
+        	else if (t < k) return median(x.right, k-t-1); 
+        	else            return x; 
+    	} 
 	
-  /*
+  	/*
 	 * closest returns a key in the symbol table that is equal to
 	 * or otherwise that is the closest on either side of the given key.
 	 * it returns null if there is no such key (empty symbol table).
@@ -161,50 +161,50 @@ public class BST<Key extends Comparable<Key>, Value> {
 	}
 
 	public Key ceiling(Key key) {
-    if (key == null) throw new NullPointerException("argument to ceiling() is null");
-    if (root == null) return null;
-    Node x = ceiling(root, key);
-    if (x == null) return null;
-    else return x.key;
-  }
+    		if (key == null) throw new NullPointerException("argument to ceiling() is null");
+    		if (root == null) return null;
+    		Node x = ceiling(root, key);
+    		if (x == null) return null;
+    		else return x.key;
+  	}
 
-  private Node ceiling(Node x, Key key) {
-    if (x == null) return null;
-    int cmp = key.compareTo(x.key);
-    if (cmp == 0) return x;
-    if (cmp < 0) { 
-      Node t = ceiling(x.left, key); 
-      if (t != null) return t;
-      else return x; 
-    } 
-    return ceiling(x.right, key); 
-  } 
+  	private Node ceiling(Node x, Key key) {
+    		if (x == null) return null;
+    		int cmp = key.compareTo(x.key);
+    		if (cmp == 0) return x;
+    		if (cmp < 0) { 
+      			Node t = ceiling(x.left, key); 
+      			if (t != null) return t;
+      			else return x; 
+    		} 
+    		return ceiling(x.right, key); 
+  		} 
   
-  public Key floor(Key key) {
-    if (key == null) throw new NullPointerException("argument to floor() is null");
-    if (root == null) return null;
-    Node x = floor(root, key);
-    if (x == null) return null;
-    else return x.key;
-  } 
+ 	public Key floor(Key key) {
+    		if (key == null) throw new NullPointerException("argument to floor() is null");
+    		if (root == null) return null;
+    		Node x = floor(root, key);
+    		if (x == null) return null;
+    		else return x.key;
+  	} 
 
-  private Node floor(Node x, Key key) {
-    if (x == null) return null;
-    int cmp = key.compareTo(x.key);
-    if (cmp == 0) return x;
-    if (cmp <  0) return floor(x.left, key);
-    Node t = floor(x.right, key); 
-    if (t != null) return t;
-    else return x; 
-  } 
+	private Node floor(Node x, Key key) {
+		if (x == null) return null;
+	    	int cmp = key.compareTo(x.key);
+		if (cmp == 0) return x;
+		if (cmp <  0) return floor(x.left, key);
+		Node t = floor(x.right, key); 
+		if (t != null) return t;
+		else return x; 
+	} 
   
-  public Key max() {
-    if (root == null) return null;
-    return max(root).key;
-  } 
+  	public Key max() {
+    		if (root == null) return null;
+    		return max(root).key;
+  	} 
 
-  private Node max(Node x) {
-    if (x.right == null) return x; 
-    else                 return max(x.right); 
-  } 
+  	private Node max(Node x) {
+    		if (x.right == null) return x; 
+    		else                 return max(x.right); 
+  	} 
 }
