@@ -1,6 +1,7 @@
 //The LinkedListST class represents an (unordered) symbol table of
 //generic key-value pairs.  It supports put, get, and delete methods.
-
+import java.util.*;
+	
 public class LinkedListST<Key extends Comparable<Key>, Value extends Comparable<Value>> {
     private Node first;      // the linked list of key-value pairs
     private int N;
